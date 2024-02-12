@@ -1,0 +1,23 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g -fsanitize=address
+LDFLAGS = -L./ -lftprintf
+
+# List of source files
+SRCS = main.c
+
+# Object files corresponding to source files
+OBJS = $(SRCS:.c=.o)
+
+# Target executable
+TARGET = a.out
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJS) $(TARGET)
