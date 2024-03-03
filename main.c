@@ -3,32 +3,34 @@
 #include "./ft_printf_bonus.h"
 int	main(void)
 {
-	// printf("%s", "some string with %s hehe");
-	// ft_printf("%s", "some string with %s hehe");
-	printf("%5.0d\n", 0);
-	printf("%d\n", 0);
-	printf("%.0d\n", 0);
-	printf("%.0d\n", 1);
-	// ft_printf("%5.0d\n", 0);
-	// ft_printf("%d\n", ft_printf("%u", -10));
-	// ft_printf("%d\n", printf("%u", -10));
-	// ft_printf("%d\n", ft_printf("%10.3d\n", -1000));
-	// ft_printf("%d\n", printf("%10.3d\n", -1000));
-	// ft_printf("%d\n", ft_printf("%+10.3d\n", -1000));
-	// ft_printf("%d\n", printf("%+10.3d\n", -1000));
-	// ft_printf("%d\n", ft_printf("ft_printf:%-010.5s\n", "asdfasdfasdfasdf"));
-	// ft_printf("%d\n", printf("printf   :%-010.5s\n", "asdfasdfasdfasdf"));
-	// ft_printf("%p\n", "abced");
-	// printf("%p\n", "abced");
-	// ft_printf("%.1p\n", "abced");
-	// printf("%.1p\n", "abced");
-	// ft_printf("%+#.20p\n", "abced");
-	// printf("%+#.20p\n", "abced");
-	// ft_printf("%+#20.10p\n", "abced");
-	// printf("%+#20.10p\n", "abced");
-	// ft_printf("%10.5p\n", "abced");
-	// printf("%10.5p\n", "abced");
-	// ft_printf("%11.10p\n", "abced");
-	// printf("%11.10p\n", "abced");
+	// ft_printf("ft%.i\n", 0);
+	// ft_printf("ft%.0i\n", 0);
+	ft_printf("ft%.3i\n", 0);
+	ft_printf("ft%04d\n", 0);
+	ft_printf("ft%04.0d\n", 0);
+	ft_printf("ft%04.0d\n", 1);
+	// printf("og%.i\n", 0);
+	// printf("og%.0i\n", 0);
+	// printf("og%.3i\n", 0);
+	// printf("og%04d\n", 0);
+	// printf("og%04.0d\n", 0);
+	// printf("og%04.0d\n", 1);
+	// printf("%08.5d\n", -34);
+	// printf("%08.d\n", -34);
+	// printf("%08.1d\n", -34);
+	// printf("%08.2d\n", -34);
+	// printf("%08.3d\n", -34);
+	// printf("%8.3d\n", -34);
+	// ft_printf("%08.5d\n", -34);
+	// ft_printf("%08.d\n", -34);
+	// ft_printf("%08.1d\n", -34);
+	// ft_printf("%08.2d\n", -34);
+	// ft_printf("%08.3d\n", -34);
+	// ft_printf("%8.3d\n", -34);
+
+	// printf("%7i\n", -12);
+	// ft_printf("%7i\n", -12);
+	// printf("%  d\n", 1);
+	// ft_printf("%  d\n", 1);
 	return (0);
 }

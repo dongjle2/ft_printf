@@ -6,7 +6,7 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 00:57:53 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/02/12 01:01:41 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:35:51 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	print_display(t_display *d, t_packet *k, int *ret_val)
 		if (print_padding(d, ret_val) == -1)
 			return (-1);
 	}
-	ft_putstr_fd(&k->chr, 1, ret_val);
+	ft_putchar_fd(k->chr, 1, ret_val);
 	if (d->num_space && d->space_location == 1)
 	{
 		if (print_space(d, k, ret_val) == -1)

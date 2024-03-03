@@ -6,7 +6,7 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:13:45 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/02/12 02:09:15 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:13:14 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static int	print_padding(t_display *d, int *ret_val)
 {
 	char	*buf_zero;
 
-	buf_zero = malloc(d->num_zero);
+	buf_zero = ft_calloc(d->num_zero + 1, 1);
 	if (buf_zero == NULL)
 		return (-1);
 	ft_memset(buf_zero, '0', d->num_zero);

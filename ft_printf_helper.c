@@ -6,7 +6,7 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:47:06 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/02/09 00:49:04 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:19:05 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	ft_max(long long a, long long b)
 	if (a < b)
 		return (b);
 	return (a);
+}
+
+int	ft_min(long long a, long long b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }
 
 void	init_t_display(t_display *d)

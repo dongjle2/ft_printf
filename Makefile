@@ -1,4 +1,4 @@
-SRCS_MAND := fmt_s_bonus.c fmt_u_bonus.c fmt_x_bonus.c fmt_c_bonus.c fmt_p_bonus.c fmt_d.c ft_printf_helper.c ft_numtoa.c ft_printf_bonus_copy.c
+SRCS_MAND := fmt_s_bonus.c fmt_u_bonus.c fmt_x_bonus.c fmt_c_bonus.c fmt_p_bonus.c fmt_d.c ft_printf_helper.c ft_numtoa.c ft_printf_bonus.c
 OBJS_MAND := $(SRCS_MAND:.c=.o)
 # SRCS_BONUS := ft_printf_bonus.c ft_numtoa.c ft_printf_helper.c \
 # ./fmt_d/{both_precision_width.c ft_printf_d_bonus.c}
@@ -7,7 +7,7 @@ OBJS_MAND := $(SRCS_MAND:.c=.o)
 LIBFT_DIR := ./libft
 DEP_ARC := libft.a
 
-CFLAGS := -g -fsanitize=address
+CFLAGS := -Wall -Wextra -g
 
 NAME := libftprintf.a
 
