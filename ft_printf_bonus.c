@@ -23,18 +23,36 @@ int	ft_printf(const char *s, ...)
 	{
 		if (*s == '%')
 		{
-			s++;
-			s += begin_rd(s, ap, &ret_val);
+			if (parsing(&s, ap, &ret_val)== -1)
+			{
+				ret_val = -1;
+				break ;
+			}
 		}
 		else
-		{ 
-			ft_putchar_fd(*s, 1, &ret_val);
-			s++;
+		{
+			if (ft_putchar_fd(*(++s), 1, &ret_val) == -1)
+				return (-1);
 		}
 	}
 	va_end(ap);
 	return (ret_val);
 }
+
+int	parsing(const char **s, va_list ap, int *ret_val)
+{
+	int	num_read;
+
+	num_read = begin_read(++s, ap, &ret_val);
+	if (num_read == -1)
+		return (-1);
+	else
+	{
+		s+= num_read;
+		return (0);
+	}
+}
+
 
 int	begin_rd(const char *s, va_list ap, int *ret_val)
 {
@@ -46,7 +64,8 @@ int	begin_rd(const char *s, va_list ap, int *ret_val)
 	if (!mem)
 		return (-1);
 	rd_mem_to_pkt(&k, mem);
-	prt_pkt(&k, ap, ret_val);
+	if (prt_pkt(&k, ap, ret_val) == -1)
+		return (-1);
 	mem_len = ft_strlen(mem);
 	free(mem);
 	return (mem_len);

@@ -6,13 +6,16 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 22:56:17 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/03/02 23:14:04 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:55:48 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static void		ck_input_bigger(t_display *d, t_packet *k);
+static void		set_t_display(t_display *d, t_packet *k);
+static int	print_display(t_display *d, t_packet *k, int *ret_val);
+static int	print_space_s(t_display *d, t_packet *k, int *ret_val);
 
 int	prt_s(t_packet *k, t_display *d, va_list ap, int *ret_val)
 {
@@ -61,20 +64,20 @@ static int	print_display(t_display *d, t_packet *k, int *ret_val)
 	ft_memmove(buf_display, k->pstr, k->precision);
 	if (d->num_space && d->space_location == 0)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space_s(d, k, ret_val) == -1)
 			return (-1);
 	}
 	ft_putstr_fd(buf_display, 1, ret_val);
 	if (d->num_space && d->space_location == 1)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space_s(d, k, ret_val) == -1)
 			return (-1);
 	}
 	free(buf_display);
 	return (0);
 }
 
-static int	print_space(t_display *d, t_packet *k, int *ret_val)
+static int	print_space_s(t_display *d, t_packet *k, int *ret_val)
 {
 	char	*buf_space;
 

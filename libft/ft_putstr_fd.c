@@ -6,17 +6,18 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:58:38 by dongjle2          #+#    #+#             */
-/*   Updated: 2023/11/14 22:24:02 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:41:55 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd, int *ret_val)
+ssize_t	ft_putstr_fd(char *s, int fd, int *ret_val)
 {
 	while (*s)
 	{
-		ft_putchar_fd(*s, fd, ret_val);
+		if (ft_putchar_fd(*s, fd, ret_val) == -1)
+			return (-1);
 		s++;
 	}
 }

@@ -6,13 +6,17 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 01:38:07 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/02/12 02:03:01 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:53:20 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static void		ck_input_bigger(t_display *d, t_packet *k);
+static void		set_t_display(t_display *d, t_packet *k);
+static int	print_display(t_display *d, t_packet *k, int *ret_val);
+static int	print_padding(t_display *d, int *ret_val);
+static int	print_space(t_display *d, int *ret_val);
 
 int	prt_p(t_packet *k, t_display *d, va_list ap, int *ret_val)
 {
@@ -45,9 +49,11 @@ static void	set_t_display(t_display *d, t_packet *k)
 
 static int	print_display(t_display *d, t_packet *k, int *ret_val)
 {
+	if (k != NULL)
+		;
 	if (d->num_space && d->space_location == 0)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space(d, ret_val) == -1)
 			return (-1);
 	}
 	ft_putstr_fd("0x", 1, ret_val);
@@ -59,7 +65,7 @@ static int	print_display(t_display *d, t_packet *k, int *ret_val)
 	ft_putstr_fd(d->itoa, 1, ret_val);
 	if (d->num_space && d->space_location == 1)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space(d, ret_val) == -1)
 			return (-1);
 	}
 	return (0);
@@ -78,46 +84,15 @@ static int	print_padding(t_display *d, int *ret_val)
 	return (0);
 }
 
-static int	print_space(t_display *d, t_packet *k, int *ret_val)
+static int	print_space(t_display *d, int *ret_val)
 {
 	char	*buf_space;
 
 	buf_space = ft_calloc(1, d->num_space + 1);
 	if (buf_space == NULL)
 		return (-1);
-	if (d->space_location == 0 && k->pad_flag)
-		ft_memset(buf_space, '0', d->num_space);
-	else
-		ft_memset(buf_space, ' ', d->num_space);
+	ft_memset(buf_space, ' ', d->num_space);
 	ft_putstr_fd(buf_space, 1, ret_val);
 	free(buf_space);
 	return (0);
 }
-
-
-// static void	print_display(t_display *d, t_packet *k, int *ret_val)
-// {
-// 	char	buf_zero[ft_max(d->num_zero, 1)];
-// 	char	buf_space[ft_max(d->num_space, 1)];
-
-// 	if (d->num_zero && d->space_location == 0)
-// 	{
-// 		if (k->pad_flag)
-// 			ft_memset(&buf_space, '0', d->num_space);
-// 		else
-// 			ft_memset(&buf_space, ' ', d->num_space);
-// 		ft_putstr_fd(&buf_space[0], 1, ret_val);
-// 	}
-// 	if (d->sign == '-')
-// 		ft_putchar_fd('-', 1, ret_val);
-// 	else if (k->plus_flag && 0 <= k->val.i)
-// 			ft_putchar_fd('+', 1, ret_val);
-// 	if (d->num_zero)
-// 		ft_putstr_fd(&buf_zero[0], 1, ret_val);
-// 	ft_putstr_fd(d->itoa, 1, ret_val);
-// 	if (d->num_zero && d->space_location == 1)
-// 	{
-// 		ft_memset(&buf_space, ' ', d->num_space);
-// 		ft_putstr_fd(&buf_space[0], 1, ret_val);
-// 	}
-// }

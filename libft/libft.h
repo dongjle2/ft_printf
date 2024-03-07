@@ -6,7 +6,7 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:34:43 by dongjle2          #+#    #+#             */
-/*   Updated: 2023/11/13 16:39:54 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:41:02 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
-void	ft_putchar_fd(char c, int fd, int *ret_val);
-void	ft_putstr_fd(char *s, int fd, int *ret_val);
+ssize_t	ft_putchar_fd(char c, int fd, int *ret_val);
+ssize_t	ft_putstr_fd(char *s, int fd, int *ret_val);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 t_list	*ft_lstlast(t_list *lst);

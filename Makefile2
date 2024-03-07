@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wextra -Werror -g
+CFLAGS = -g
 LDFLAGS = -L./ -lftprintf
 
 # List of source files

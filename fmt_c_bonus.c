@@ -6,11 +6,16 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 00:57:53 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/03/01 20:35:51 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:28:02 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+static int	print_space_s(t_display *d, t_packet *k, int *ret_val);
+static void		set_t_display(t_display *d, t_packet *k);
+static int	print_display(t_display *d, t_packet *k, int *ret_val);
+static int	print_padding(t_display *d, int *ret_val);
 
 int	prt_c(t_packet *k, t_display *d, va_list ap, int *ret_val)
 {
@@ -39,7 +44,7 @@ static int	print_display(t_display *d, t_packet *k, int *ret_val)
 {
 	if (d->num_space && d->space_location == 0)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space_s(d, k, ret_val) == -1)
 			return (-1);
 	}
 	if (d->num_zero)
@@ -50,7 +55,7 @@ static int	print_display(t_display *d, t_packet *k, int *ret_val)
 	ft_putchar_fd(k->chr, 1, ret_val);
 	if (d->num_space && d->space_location == 1)
 	{
-		if (print_space(d, k, ret_val) == -1)
+		if (print_space_s(d, k, ret_val) == -1)
 			return (-1);
 	}
 	return (0);
@@ -69,11 +74,11 @@ static int	print_padding(t_display *d, int *ret_val)
 	return (0);
 }
 
-static int	print_space(t_display *d, t_packet *k, int *ret_val)
+static int	print_space_s(t_display *d, t_packet *k, int *ret_val)
 {
 	char	*buf_space;
 
-	buf_space = malloc(d->num_space);
+	buf_space = ft_calloc(d->num_space + 1, 1);
 	if (buf_space == NULL)
 		return (-1);
 	if (d->space_location == 0 && k->pad_flag)

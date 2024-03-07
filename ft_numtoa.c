@@ -6,7 +6,7 @@
 /*   By: dongjle2 <dongjle2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 21:54:48 by dongjle2          #+#    #+#             */
-/*   Updated: 2024/02/06 17:21:38 by dongjle2         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:35:34 by dongjle2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	check_sign(t_nums *val, char *sign, char *fmt)
 {
 	int	len_n;
 
-	if (*fmt == 'p')
-		len_n = ft_ulllen(val->ull, 0);
-	else if (ft_strchr("uxX", *fmt))
+	if (*fmt == 'u')
 		len_n = ft_uilen(val->ui, 0, fmt);
+	else if (ft_strchr("pxX", *fmt))
+		len_n = ft_ulllen(val->ull, 0);
 	else if ((*fmt == 'd' || *fmt == 'i') && 0 <= val->i)
 		len_n = ft_ilen(val->i, 0);
 	else
